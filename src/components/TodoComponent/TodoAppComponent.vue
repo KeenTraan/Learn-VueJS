@@ -8,13 +8,12 @@
             <input
               type="text"
               name="input"
-              placeholder="Nhập tên nhiệm vụ"
+              placeholder=" Nhập tên nhiệm vụ"
               v-model="input_content"
             />
             <br />
             <p style="margin-left: 1rem">{{ `${hours} ${date}` }}</p>
             <button
-              :value="save"
               :disabled="this.input_content === ''"
               class="btn-save"
               @click="handleAddItem"
@@ -31,31 +30,34 @@
             >
               <h6 style="margin-left: 1rem">{{ item.taskname }}</h6>
               <p style="margin-left: 1rem">{{ item.currentTime }}</p>
-              <button class="btn-save" @click="handleCompletedItem(index)">hoàn thành</button>
-              <button class="btn-cancel" @click="handleCancel(index)">từ bỏ</button>
+              <button class="btn-save" @click="handleCompletedItem(index)">
+                hoàn thành
+              </button>
+              <button class="btn-cancel" @click="handleCancel(index)">
+                từ bỏ
+              </button>
             </div>
           </div>
+            <button type="submit" class="btn-add" @click="ishiden = !ishiden">
+              <strong> Thêm Mới </strong>
+            </button>
         </div>
+
         <div>
-          <CompletedTodo v-bind:completed="completed"/>
+          <CompletedTodo v-bind:completed="completed" />
         </div>
+
         <div>
-          <CancelTodo v-bind:cancel="cancelItem"/>
+          <CancelTodo v-bind:cancel="cancelItem" />
         </div>
       </div>
-      <button 
-      type="submit" 
-      class="btn-add" 
-      @click="ishiden = !ishiden">
-        <strong> Thêm Mới </strong>
-      </button>
     </div>
   </div>
 </template>
 
 <script>
 import CompletedTodo from "@/components/TodoComponent/CompletedComponet";
-import CancelTodo from "@/components/TodoComponent/CancelComponent.vue"
+import CancelTodo from "@/components/TodoComponent/CancelComponent.vue";
 export default {
   name: "AddItemComponent",
   data() {
@@ -66,15 +68,18 @@ export default {
       input_content: "",
       todoList: JSON.parse(localStorage.getItem("todoList")) ?? [],
       completed: JSON.parse(localStorage.getItem("Completed")) ?? [],
-      cancelItem: JSON.parse(localStorage.getItem("Cancel")) ?? []
+      cancelItem: JSON.parse(localStorage.getItem("Cancel")) ?? [],
     };
   },
   methods: {
     handleDestroy() {
-      this.input_content = ""
+      this.ishiden = false;
+      this.input_content = "";
     },
     handleAddItem() {
-      const time = `${new Date().getHours()}:${new Date().getMinutes()} ${new Date().getDate()}/${new Date().getMonth()+1} ${new Date().getFullYear()}`;
+      const time = `${new Date().getHours()}:${new Date().getMinutes()} ${new Date().getDate()}/${
+        new Date().getMonth() + 1
+      } ${new Date().getFullYear()}`;
       const todoAdd = {
         taskname: this.input_content,
         currentTime: time,
@@ -82,28 +87,29 @@ export default {
       this.todoList = [...this.todoList, todoAdd];
       localStorage.setItem("todoList", JSON.stringify(this.todoList));
       this.input_content = "";
+      this.ishiden = false;
     },
     handleCompletedItem(index) {
-      const completedTask = this.todoList[index]
-      if(Array.isArray(this.completed)) {
-        this.completed.push(completedTask)
-      }else {
-        this.completed = [completedTask]
+      const completedTask = this.todoList[index];
+      if (Array.isArray(this.completed)) {
+        this.completed.push(completedTask);
+      } else {
+        this.completed = [completedTask];
       }
-      this.todoList = this.todoList.filter((task, i) => i != index)
-      localStorage.setItem('Completed', JSON.stringify(this.completed))
+      this.todoList = this.todoList.filter((task, i) => i != index);
+      localStorage.setItem("Completed", JSON.stringify(this.completed));
       localStorage.setItem("todoList", JSON.stringify(this.todoList));
     },
-    handleCancel(index ) {
-      const cancelTask = this.todoList[index]
-      if(Array.isArray(this.cancelItem)) {
-        this.cancelItem.push(cancelTask)
-      }else {
-        this.cancelItem = [cancelTask]
+    handleCancel(index) {
+      const cancelTask = this.todoList[index];
+      if (Array.isArray(this.cancelItem)) {
+        this.cancelItem.push(cancelTask);
+      } else {
+        this.cancelItem = [cancelTask];
       }
-      this.todoList = this.todoList.filter((task, i) => i != index)
-      localStorage.setItem('Cancel', JSON.stringify(this.cancelItem))
-      localStorage.setItem('todolist', JSON.stringify(this.todoList))
+      this.todoList = this.todoList.filter((task, i) => i != index);
+      localStorage.setItem("Cancel", JSON.stringify(this.cancelItem));
+      localStorage.setItem("todolist", JSON.stringify(this.todoList));
     },
   },
   mounted() {
@@ -121,7 +127,7 @@ export default {
   },
   components: {
     CompletedTodo,
-    CancelTodo
+    CancelTodo,
   },
 };
 </script>
@@ -137,8 +143,7 @@ export default {
   background-color: rgb(221, 219, 219);
   width: 20vw;
   height: 90vh;
-  position: relative;
-  top: 1rem;
+  margin-top: 20px;
 
   .item-list {
     display: flex;
@@ -154,14 +159,13 @@ export default {
     .input-form {
       border-radius: 5px;
       margin-top: 2rem;
-      margin-left: 15px;
       background-color: white;
       width: 18vw;
       input {
         width: 90%;
-        border-radius: 0.5rem;
+        border-radius: 2px;
         margin: 1rem;
-        border: 0.5px solid;
+        border: 0.1px solid rgb(0, 0, 0, 0.3);
       }
     }
   }
@@ -169,13 +173,16 @@ export default {
     display: flex;
     flex-direction: column;
     margin-right: 3rem;
+    align-items: center;
+    position: relative;
     .btn-save {
       background-color: green;
       color: white;
       border: none;
       border-radius: 5px;
-      margin: 4px 0 4px 12px;
-      padding: 2px 12px 2px 12px;
+      margin: 4px 20px 4px 12px;
+      padding: 4px 20px 4px 20px;
+      text-align: center;
     }
     .btn-cancel {
       background-color: rgb(220, 20, 60);
@@ -183,18 +190,19 @@ export default {
       border-radius: 5px;
       border: none;
       float: right;
+      text-align: center;
       margin: 4px 12px 4px 0;
-      padding: 2px 12px 2px 12px;
+      padding: 4px 20px 4px 20px;
     }
-  }
-  .btn-add {
-    position: absolute;
-    bottom: 10px;
-    left: 4rem;
-    width: 10rem;
-    border-radius: 0.5rem;
-    border: 0.5px solid green;
-    color: green;
+      .btn-add {
+        bottom: 10px;
+        position: absolute;
+        margin: auto;
+        width: 18vw;
+        border-radius: 0.1rem;
+        border: 0.5px solid green;
+        color: green;
+      }
   }
   .btn-add:hover {
     outline: 3px solid rgb(176, 232, 250, 0.7);
