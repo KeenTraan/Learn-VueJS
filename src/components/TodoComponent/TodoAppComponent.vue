@@ -165,7 +165,7 @@ export default {
         width: 90%;
         border-radius: 2px;
         margin: 1rem;
-        border: 0.1px solid rgb(0, 0, 0, 0.3);
+        border: 1px solid rgb(0, 0, 0, 0.2);
       }
     }
   }
