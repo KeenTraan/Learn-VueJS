@@ -7,9 +7,9 @@
         v-for="(item, index) in cancel"
         :key="index"
       >
-        <h6 class="text-item">{{ item.taskname }}</h6>
+        <h5 class="text-item">{{ item.taskname }}</h5>
         <p class="text-item">{{ item.currentTime }}</p>
-        <p class="text-item" style="color: red">hủy bỏ lúc:</p>
+        <p class="text-item" style="color: red">Hủy bỏ lúc:</p>
         <p class="text-item" style="color: red">
           {{
             `${new Date().getHours()}:${new Date().getMinutes()} ${new Date().getDate()}/${

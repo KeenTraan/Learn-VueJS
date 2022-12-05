@@ -28,7 +28,7 @@
               v-for="(item, index) in todoList"
               :key="index"
             >
-              <h6 style="margin-left: 1rem">{{ item.taskname }}</h6>
+              <h5 style="margin-left: 1rem">{{ item.taskname }}</h5>
               <p style="margin-left: 1rem">{{ item.currentTime }}</p>
               <button class="btn-completed" @click="handleCompletedItem(index)">
                 hoàn thành
@@ -181,7 +181,7 @@ export default {
       border: none;
       border-radius: 3px;
       margin: 4px 0 4px 12px;
-      padding: 2px 14px 2px 14px;
+      padding: 2px 12px 2px 12px;
     }
     .btn-cancel {
       background-color: rgb(220, 20, 60);
@@ -190,13 +190,13 @@ export default {
       border: none;
       float: right;
       margin: 4px 12px 4px 0;
-      padding: 2px 14px 2px 14px;
+      padding: 2px 12px 2px 12px;
     }
     .btn-add {
       bottom: 10px;
       position: absolute;
       margin: auto;
-      width: 17vw;
+      width: 18vw;
       border-radius: 0.1rem;
       border: 0.5px solid green;
       color: green;
@@ -205,8 +205,8 @@ export default {
       background-color: green;
       color: white;
       border-radius: 3px;
-      padding: 1px 14px 1px 14px;
-      width: 7.5vw;
+      padding: 2px 12px 2px 12px;
+      width: 7vw;
       margin: 4px 0 4px 12px;
       border: none;
     }

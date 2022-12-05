@@ -7,9 +7,9 @@
         v-for="(item, index) in completed"
         :key="index"
       >
-        <h6 class="text-item">{{ item.taskname }}</h6>
+        <h5 class="text-item">{{ item.taskname }}</h5>
         <p class="text-item">{{ item.currentTime }}</p>
-        <p class="text-item" style="color: green">hoàn thành lúc:</p>
+        <p class="text-item" style="color: green">Hoàn thành lúc:</p>
         <p class="text-item" style="color: green">
           {{
             `${new Date().getHours()}:${new Date().getMinutes()} ${new Date().getDate()}/${
