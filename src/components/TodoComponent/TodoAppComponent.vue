@@ -30,7 +30,7 @@
             >
               <h6 style="margin-left: 1rem">{{ item.taskname }}</h6>
               <p style="margin-left: 1rem">{{ item.currentTime }}</p>
-              <button class="btn-save" @click="handleCompletedItem(index)">
+              <button class="btn-completed" @click="handleCompletedItem(index)">
                 hoàn thành
               </button>
               <button class="btn-cancel" @click="handleCancel(index)">
@@ -175,34 +175,41 @@ export default {
     margin-right: 3rem;
     align-items: center;
     position: relative;
-    .btn-save {
+    .btn-completed {
       background-color: green;
       color: white;
       border: none;
-      border-radius: 5px;
-      margin: 4px 20px 4px 12px;
-      padding: 4px 20px 4px 20px;
-      text-align: center;
+      border-radius: 3px;
+      margin: 4px 0 4px 12px;
+      padding: 2px 14px 2px 14px;
     }
     .btn-cancel {
       background-color: rgb(220, 20, 60);
       color: white;
-      border-radius: 5px;
+      border-radius: 3px;
       border: none;
       float: right;
-      text-align: center;
       margin: 4px 12px 4px 0;
-      padding: 4px 20px 4px 20px;
+      padding: 2px 14px 2px 14px;
     }
-      .btn-add {
-        bottom: 10px;
-        position: absolute;
-        margin: auto;
-        width: 18vw;
-        border-radius: 0.1rem;
-        border: 0.5px solid green;
-        color: green;
-      }
+    .btn-add {
+      bottom: 10px;
+      position: absolute;
+      margin: auto;
+      width: 18vw;
+      border-radius: 0.1rem;
+      border: 0.5px solid green;
+      color: green;
+    }
+    .btn-save {
+      background-color: green;
+      color: white;
+      border-radius: 3px;
+      padding: 1px 14px 1px 14px;
+      width: 7.5vw;
+      margin: 4px 0 4px 12px;
+      border: none;
+    }
   }
   .btn-add:hover {
     outline: 3px solid rgb(176, 232, 250, 0.7);
