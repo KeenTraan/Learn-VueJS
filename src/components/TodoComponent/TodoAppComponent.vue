@@ -196,7 +196,7 @@ export default {
       bottom: 10px;
       position: absolute;
       margin: auto;
-      width: 18vw;
+      width: 17vw;
       border-radius: 0.1rem;
       border: 0.5px solid green;
       color: green;
