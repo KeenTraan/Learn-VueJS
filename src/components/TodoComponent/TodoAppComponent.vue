@@ -109,7 +109,7 @@ export default {
       }
       this.todoList = this.todoList.filter((task, i) => i != index);
       localStorage.setItem("Cancel", JSON.stringify(this.cancelItem));
-      localStorage.setItem("todolist", JSON.stringify(this.todoList));
+      localStorage.setItem("todoList", JSON.stringify(this.todoList));
     },
   },
   mounted() {
